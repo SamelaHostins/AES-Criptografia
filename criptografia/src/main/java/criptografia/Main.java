@@ -33,6 +33,7 @@ public class Main {
         List<String[][]> listaDeRoundKey = ex.gerarMatrizes(11, 4, 4, matrizDaChave);
 
         // C:/Users/Acer/OneDrive/Documentos/teste.txt
+        // C:/Users/Acer/Downloads/5.1.JOINS.pdf
         String arquivoDeEntrada = validarEntradas.obterCaminhoArquivoValido(scanner);
         System.out.println("");
 
@@ -65,9 +66,9 @@ public class Main {
         Key key = new SecretKeySpec(password, "AES");
 
         // Criptografar o arquivo
-        encryptFile(key, "C:/Users/Acer/OneDrive/Documentos/teste2.txt", "arquivoCriptografado");
+        encryptFile(key, "C:/Users/Acer/Downloads/5.1.JOINS.pdf", "arquivoCriptografado");
 
-        decryptFile(key, "arquivoCriptografado", "arquivoDescriptografado");
+        decryptFile(key, "saida", "arquivoDescriptografado");
 
         System.out.println("Operações de criptografia e descriptografia concluídas com sucesso!");
 

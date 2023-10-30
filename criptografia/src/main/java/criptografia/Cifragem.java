@@ -522,25 +522,4 @@ public class Cifragem {
             System.out.println();
         }
     }
-    // String[][] bloco = {
-    // { "6B", "2B", "C0", "7B" },
-    // { "CA", "7B", "A2", "C5" },
-    // { "6F", "63", "CA", "30" },
-    // { "A3", "7C", "F2", "01" },
-    // };
-
-    // int[][] matrizInt = cifragem.converterMatrizHexParaInt(bloco);
-    // cifragem.imprimirMatriz(matrizInt);
-    // System.out.println("");
-
-    // int[][] matriz = cifragem.mixColumns(bloco);
-    // String[][] matrizHex = cifragem.ConverteMatrizParaHex(matriz);
-    // chave.printMatrix(matrizHex);
-
-    // System.out.println(cifragem.galoi(43, "03"));
-    // System.out.println(cifragem.verificaSeEhZero(123));
-    // System.out.println(cifragem.verificaSeEhZero(99));
-    // System.out.println(cifragem.galoi(124, "02"));
-
-    // }
 }

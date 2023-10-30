@@ -2,6 +2,7 @@ package criptografia;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 // Autoras: Karoline, Maria Eduarda e Sâmela
 public class ECBPadding extends Cifragem {
@@ -85,5 +86,23 @@ public class ECBPadding extends Cifragem {
             }
             System.out.println(); // Pular uma linha entre matrizes
         }
+    }
+
+    public static void main(String[] args) {
+        ECBPadding e = new ECBPadding();
+        ValidarEntradas validarEntradas = new ValidarEntradas();
+        CriptografarArquivo criptografarArquivo = new CriptografarArquivo();
+        Scanner scanner = new Scanner(System.in);
+
+        // C:/Users/Acer/OneDrive/Documentos/teste.txt
+        String arquivoDeEntrada = validarEntradas.obterCaminhoArquivoValido(scanner);
+        System.out.println("");
+
+        byte[] arquivoEmBytes = criptografarArquivo.lerArquivoSemSinal(arquivoDeEntrada);
+        byte[][] matriz = e.divideEmBlocosDe16Bytes(arquivoEmBytes);
+        String[][] matrizEmHex = e.converteMatrizParaHex(matriz);
+        List<String[][]> listaDeBlocos = e.organizarBlocos4x4(matrizEmHex);
+        e.imprimirListaDeMatrizes(listaDeBlocos);
+
     }
 }
