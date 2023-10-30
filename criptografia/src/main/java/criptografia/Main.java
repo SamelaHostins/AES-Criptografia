@@ -50,7 +50,7 @@ public class Main {
         Security.addProvider(new BouncyCastleProvider());
 
         // Defina sua senha como uma string de bytes separados por vírgula
-        String passwordBytes = "20,1,94,33,127,0,48,9,31,94,112,40,59,30,100,248";
+        String passwordBytes = "65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80";
         String[] byteStrings = passwordBytes.split(",");
         byte[] password = new byte[16]; // Chave de 128 bits (16 bytes)
 
@@ -66,9 +66,9 @@ public class Main {
         Key key = new SecretKeySpec(password, "AES");
 
         // Criptografar o arquivo
-        encryptFile(key, "C:/Users/Acer/Downloads/5.1.JOINS.pdf", "arquivoCriptografado");
+        encryptFile(key, "C:/Users/Acer/OneDrive/Documentos/teste.txt", "arquivoCriptografado");
 
-        decryptFile(key, "saida", "arquivoDescriptografado");
+        decryptFile(key, "saida2", "arquivoDescriptografado");
 
         System.out.println("Operações de criptografia e descriptografia concluídas com sucesso!");
 

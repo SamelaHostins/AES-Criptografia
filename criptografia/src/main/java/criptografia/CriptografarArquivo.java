@@ -45,8 +45,9 @@ public class CriptografarArquivo extends ECBPadding {
                 for (String[] linha : matrizToConvert) {
                     for (String elemento : linha) {
                         // Converter cada valor hexadecimal para um byte
-                        byte valorByte = (byte) Integer.parseInt(elemento, 16);
+                        int valorByte = (int) Integer.parseInt(elemento, 16);
                         fos.write(valorByte);
+                        fos.flush();
                     }
                 }
             }
