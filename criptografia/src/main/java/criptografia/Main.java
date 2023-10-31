@@ -1,13 +1,10 @@
 package criptografia;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.security.Key;
 import java.security.Security;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -42,6 +39,7 @@ public class Main {
 
         try {
             criptografarArquivo.criptografaArquivo(arquivoDeEntrada, arquivoDeSaida, listaDeRoundKey);
+            criptografarArquivo.decryptFile(arquivoDeEntrada, arquivoDeSaida, chaveHexadecimal);
         } catch (Exception e1) {
             // Lide com a exceção aqui
             e1.printStackTrace(); // ou qualquer tratamento de erro específico que você desejar
@@ -65,56 +63,7 @@ public class Main {
         // Crie a chave a partir dos bytes da chave
         Key key = new SecretKeySpec(password, "AES");
 
-        // Criptografar o arquivo
-        encryptFile(key, "C:/Users/Acer/OneDrive/Documentos/teste.txt", "arquivoCriptografado");
-
-        decryptFile(key, "saida2", "arquivoDescriptografado");
-
         System.out.println("Operações de criptografia e descriptografia concluídas com sucesso!");
 
-    }
-
-    public static void encryptFile(Key key, String inputFile, String outputFile) throws Exception {
-        Cipher cipher = Cipher.getInstance(ALGORITHM, "BC");
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-
-        FileInputStream fis = new FileInputStream(inputFile);
-        FileOutputStream fos = new FileOutputStream(outputFile);
-        byte[] input = new byte[64];
-        int bytesRead;
-        while ((bytesRead = fis.read(input)) != -1) {
-            byte[] output = cipher.update(input, 0, bytesRead);
-            if (output != null) {
-                fos.write(output);
-            }
-        }
-        byte[] output = cipher.doFinal();
-        if (output != null) {
-            fos.write(output);
-        }
-        fos.close();
-        fis.close();
-    }
-
-    public static void decryptFile(Key key, String inputFile, String outputFile) throws Exception {
-        Cipher cipher = Cipher.getInstance(ALGORITHM, "BC");
-        cipher.init(Cipher.DECRYPT_MODE, key);
-
-        FileInputStream fis = new FileInputStream(inputFile);
-        FileOutputStream fos = new FileOutputStream(outputFile);
-        byte[] input = new byte[64];
-        int bytesRead;
-        while ((bytesRead = fis.read(input)) != -1) {
-            byte[] output = cipher.update(input, 0, bytesRead);
-            if (output != null) {
-                fos.write(output);
-            }
-        }
-        byte[] output = cipher.doFinal();
-        if (output != null) {
-            fos.write(output);
-        }
-        fos.close();
-        fis.close();
     }
 }
